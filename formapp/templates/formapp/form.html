@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Impact Survey for Students</title>
+    <style>
+        body {
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            font-family: Arial, sans-serif;
+            color: black;
+            padding: 20px;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        ol {
+            list-style-type: none;
+            padding: 2px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        nav {
+            color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: larger;
+            background-image: url('imageai.jpeg');
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <h2>Impacts of A.I. on Engineering Students</h2>
+    </nav>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <ol>
+            <li>
+                <label>1. How do you perceive the impact of AI on your future career prospects in engineering?</label><br>
+                <input type="radio" name="q1" value="-2"> Strongly Negative<br>
+                <input type="radio" name="q1" value="-1"> Somewhat Negative<br>
+                <input type="radio" name="q1" value="0"> Neutral<br>
+                <input type="radio" name="q1" value="1"> Somewhat Positive<br>
+                <input type="radio" name="q1" value="2"> Strongly Positive<br>
+            </li>
+            <li>
+                <label>2. How do you rate your level of preparedness to adapt to AI technologies in your engineering studies?</label><br>
+                <input type="radio" name="q2" value="-2"> Not Prepared at all<br>
+                <input type="radio" name="q2" value="-1"> Slightly Prepared<br>
+                <input type="radio" name="q2" value="0"> Moderately Prepared<br>
+                <input type="radio" name="q2" value="1"> Very Prepared<br>
+                <input type="radio" name="q2" value="2"> Extremely Prepared<br>
+            </li>
+            <li>
+                <label>3. What is the correlation between the number of AI-related courses taken and perceived career advancement opportunities in engineering?</label><br>
+                <input type="radio" name="q3" value="-2"> Strong Negative Correlation<br>
+                <input type="radio" name="q3" value="-1"> Moderate Negative Correlation<br>
+                <input type="radio" name="q3" value="0"> No Correlation<br>
+                <input type="radio" name="q3" value="1"> Moderate Positive Correlation<br>
+                <input type="radio" name="q3" value="2"> Strong Positive Correlation<br>
+            </li>
+            <li>
+                <label>4. How does the frequency of AI tool usage correlate with perceived skill development in engineering?</label><br>
+                <input type="radio" name="q4" value="-2"> Strong Negative Correlation<br>
+                <input type="radio" name="q4" value="-1"> Moderate Negative Correlation<br>
+                <input type="radio" name="q4" value="0"> No Correlation<br>
+                <input type="radio" name="q4" value="1"> Moderate Positive Correlation<br>
+                <input type="radio" name="q4" value="2"> Strong Positive Correlation<br>
+            </li>
+            <li>
+                <label>5. Can we predict engineering students' expected salaries based on their level of proficiency in AI technologies?</label><br>
+                <input type="radio" name="q5" value="1"> Yes<br>
+                <input type="radio" name="q5" value="0"> No<br>
+            </li>
+            <!-- Random Forest Model -->
+            <li>
+                <label>6. How likely are engineering students to pursue careers specifically focused on AI technologies?</label><br>
+                <input type="radio" name="q6" value="-2"> Very Unlikely<br>
+                <input type="radio" name="q6" value="-1"> Unlikely<br>
+                <input type="radio" name="q6" value="0"> Neutral<br>
+                <input type="radio" name="q6" value="1"> Likely<br>
+                <input type="radio" name="q6" value="2"> Very Likely<br>
+            </li>
+            <li>
+                <label>7. What factors influence engineering students' perceptions of the impact of AI on their future careers?</label><br>
+                <input type="radio" name="q7" value="1"> Interest in AI<br>
+                <input type="radio" name="q7" value="2"> Exposure to AI coursework<br>
+                <input type="radio" name="q7" value="3"> Demographic factors (age, gender, etc.)<br>
+                <input type="radio" name="q7" value="4"> Other <br>
+            </li>
+            <li>
+                <label>8. Can we predict the likelihood of engineering students participating in AI-related internships based on their academic performance and extracurricular activities?</label><br>
+                <input type="radio" name="q8" value="1"> Yes<br>
+                <input type="radio" name="q8" value="0"> No<br>
+            </li>
+            <li>
+                <label>9. How do engineering students' demographic characteristics relate to their attitudes towards AI adoption in their field?</label><br>
+                <input type="radio" name="q9" value="1"> Age<br>
+                <input type="radio" name="q9" value="2"> Gender<br>
+                <input type="radio" name="q9" value="3"> Academic Year<br>
+                <input type="radio" name="q9" value="4"> Other (Specify)<br>
+            </li>
+            <li>
+                <label>10. Are there significant differences in AI-related perceptions between engineering students from different academic departments?</label><br>
+                <input type="radio" name="q10" value="1"> Yes<br>
+                <input type="radio" name="q10" value="0"> No<br>
+            </li>
+            <li>
+                <label>11. How do you categorize your interest in AI-related topics within engineering?</label><br>
+                <input type="radio" name="q11" value="-1"> High Interest<br>
+                <input type="radio" name="q11" value="0"> Moderate Interest<br>
+                <input type="radio" name="q11" value="1"> Low Interest<br>
+            </li>
+            <li>
+                <label>12. How do you group engineering students based on their attitudes towards AI adoption in their field?</label><br>
+                <input type="radio" name="q12" value="-1"> Enthusiastic Adopters<br>
+                <input type="radio" name="q12" value="0"> Moderate Acceptors<br>
+                <input type="radio" name="q12" value="1"> Reluctant Followers<br>
+            </li>
+            <li>
+                <label>13. Are there distinct clusters of engineering students based on their preferences for AI-related coursework formats?</label><br>
+                <input type="radio" name="q13" value="1"> Yes<br>
+                <input type="radio" name="q13" value="0"> No<br>
+            </li>
+            <li>
+                <label>14. How do engineering students cluster based on their preferred AI applications in their field?</label><br>
+                <input type="radio" name="q14" value="1"> Cluster 1: Robotics<br>
+                <input type="radio" name="q14" value="2"> Cluster 2: Data Analytics<br>
+                <input type="radio" name="q14" value="3"> Cluster 3: Natural Language Processing<br>
+                <input type="radio" name="q14" value="4"> Cluster 4: Other<br>
+            </li>
+            <li>
+                <label>15. Can we identify subgroups of engineering students with similar perceptions of AI's impact on future job prospects using clustering techniques?</label><br>
+                <input type="radio" name="q15" value="1"> Yes<br>
+                <input type="radio" name="q15" value="0"> No<br>
+            </li>
+            <!-- K-nearest Neighbor (KNN) Model -->
+            <li>
+                <label>16. How do engineering students cluster based on their attitudes towards the ethical implications of AI in their field?</label><br>
+                <input type="radio" name="q16" value="-2"> Strongly Concerned<br>
+                <input type="radio" name="q16" value="-1"> Somewhat Concerned<br>
+                <input type="radio" name="q16" value="0"> Neutral<br>
+                <input type="radio" name="q16" value="1"> Somewhat Supportive<br>
+                <input type="radio" name="q16" value="2"> Strongly Supportive<br>
+            </li>
+            <li>
+                <label>17. How similar are engineering students' perceptions of the role of AI in addressing environmental challenges?</label><br>
+                <input type="radio" name="q17" value="-2"> Very Similar<br>
+                <input type="radio" name="q17" value="-1"> Somewhat Similar<br>
+                <input type="radio" name="q17" value="0"> Neutral<br>
+                <input type="radio" name="q17" value="1"> Somewhat Dissimilar<br>
+                <input type="radio" name="q17" value="2"> Very Dissimilar<br>
+            </li>
+            <li>
+                <label>18. Can we identify groups of engineering students with similar preferences for AI-related extracurricular activities?</label><br>
+                <input type="radio" name="q18" value="1"> Yes<br>
+                <input type="radio" name="q18" value="0"> No<br>
+            </li>
+            <li>
+                <label>19. How do engineering students cluster based on their preferred sources of AI-related information?</label><br>
+                <input type="radio" name="q19" value="1"> Academic Journals<br>
+                <input type="radio" name="q19" value="2"> Online Forums<br>
+                <input type="radio" name="q19" value="3"> Industry Reports<br>
+                <input type="radio" name="q19" value="4"> Other (Specify)<br>
+            </li>
+            <li>
+                <label>20. Are there distinct clusters of engineering students based on their motivations for pursuing AI-related coursework?</label><br>
+                <input type="radio" name="q20" value="1"> Yes<br>
+                <input type="radio" name="q20" value="0"> No<br>
+            </li>
+            <!-- Neural Network Model -->
+<!--            <li>-->
+<!--                <label>21. How do engineering students' attitudes towards AI-related coursework relate to their confidence in their future career prospects?</label><br>-->
+<!--                <input type="radio" name="q21" value="1"> Strong Negative Correlation<br>-->
+<!--                <input type="radio" name="q21" value="2"> Moderate Negative Correlation<br>-->
+<!--                <input type="radio" name="q21" value="3"> No Correlation<br>-->
+<!--                <input type="radio" name="q21" value="4"> Moderate Positive Correlation<br>-->
+<!--                <input type="radio" name="q21" value="5"> Strong Positive Correlation<br>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <label>22. Can neural networks predict engineering students' perceptions of the impact of AI on their collaborative teamwork dynamics?</label><br>-->
+<!--                <input type="radio" name="q22" value="1"> Yes<br>-->
+<!--                <input type="radio" name="q22" value="2"> No<br>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <label>23. What neural network architecture yields the best performance in predicting engineering students' preferences for AI-related learning materials?</label><br>-->
+<!--                <input type="radio" name="q23" value="1"> Feedforward Neural Network<br>-->
+<!--                <input type="radio" name="q23" value="2"> Convolutional Neural Network<br>-->
+<!--                <input type="radio" name="q23" value="3"> Recurrent Neural Network<br>-->
+<!--                <input type="radio" name="q23" value="4"> Other (Specify)<br>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <label>24. How do engineering students' self-reported levels of AI knowledge and skills correlate with their actual performance in AI-related tasks assessed through neural network-based evaluation?</label><br>-->
+<!--                <input type="radio" name="q24" value="1"> Strong Negative Correlation<br>-->
+<!--                <input type="radio" name="q24" value="2"> Moderate Negative Correlation<br>-->
+<!--                <input type="radio" name="q24" value="3"> No Correlation<br>-->
+<!--                <input type="radio" name="q24" value="4"> Moderate Positive Correlation<br>-->
+<!--                <input type="radio" name="q24" value="5"> Strong Positive Correlation<br>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <label>25. Can neural networks accurately predict engineering students' future participation in AI-related research projects based on their past academic performance and research experience?</label><br>-->
+<!--                <input type="radio" name="q25" value="1"> Yes<br>-->
+<!--                <input type="radio" name="q25" value="2"> No<br>-->
+<!--            </li>-->
+        </ol>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
